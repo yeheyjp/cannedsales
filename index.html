@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canned Messages Tool</title>
+
+  <!-- Load Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f5f6f7;
+    }
+    .hidden-text {
+      display: none;
+    }
+    .copied-label {
+      font-size: 0.9rem;
+      color: green;
+      margin-left: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .copied-label.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="container mt-4">
+    <h3>Canned Messages - Sales</h3>
+	
+<!-- START LIST GROUP -->    
+    <div class="list-group">
+<!-- Message 1 -->
+<div class="list-group-item d-flex justify-content-between align-items-center">
+<div>
+<span>Order Confirmation</span>
+<span id="copied-label1" class="copied-label">Copied</span>
+</div>
+<button class="btn btn-primary btn-sm" onclick="copyToClipboard('message1', 'copied-label1')">Copy</button>
+<span id="message1" class="hidden-text">Na-ship out na po namin ang inyong order.
+Please note the following details:
+
+Tracking Number: 
+Courier: Yamato
+
+Pwede pong ma-track ang order via this link:
+https://track.kuronekoyamato.co.jp/english/tracking
+
+Maraming salamat po! 🥰</span>
+</div>
+<!-- End Message 1 -->
+	  
+    </div>
+<!-- END LIST GROUP -->
+	
+  </div>
+</div>
+
+  <script>
+    function copyToClipboard(elementId, labelId) {
+      const text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const label = document.getElementById(labelId);
+        label.classList.add('visible');
+        setTimeout(() => {
+          label.classList.remove('visible');
+        }, 3000);
+      }).catch(err => {
+        console.error('Error copying text: ', err);
+      });
+    }
+  </script>
+
+</body>
+</html>
