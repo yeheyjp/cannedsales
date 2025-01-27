@@ -122,28 +122,6 @@ Maraming salamat po sa inyong order! 🥰</span>
   </div>
 
   <script>
-  
-  let recipientName = "";
-
-  function saveName() {
-    const nameInput = document.getElementById('recipientName').value.trim();
-    if (nameInput) {
-      recipientName = nameInput;
-      localStorage.setItem('recipientName', recipientName); // Save name to localStorage
-      alert(`Recipient's name saved as: ${recipientName}`);
-      updateMessages();
-    } else {
-      alert('Please enter a name.');
-    }
-  }
-
-  function updateMessages() {
-    const messages = document.querySelectorAll('.hidden-text');
-    messages.forEach(message => {
-      message.textContent = message.textContent.replace('{name}', recipientName);
-    });
-  }
-	
     function copyBoth(elementId, labelId) {
       const text = document.getElementById(elementId).textContent.trim();
       const textarea = document.createElement('textarea');
@@ -159,16 +137,6 @@ Maraming salamat po sa inyong order! 🥰</span>
         label.classList.remove('visible');
       }, 3000);
     }
-	
-	// Load saved name on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    const savedName = localStorage.getItem('recipientName'); // Retrieve name from localStorage
-    if (savedName) {
-      recipientName = savedName;
-      document.getElementById('recipientName').value = savedName; // Update the input field
-      updateMessages(); // Update messages with the saved name
-    }
-  });
   </script>
 
 </body>
