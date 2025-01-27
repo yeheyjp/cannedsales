@@ -25,78 +25,82 @@
     .copied-label.visible {
       opacity: 1;
     }
+	.list-group-item div span {
+	word-wrap: break-word;
+	word-break: break-word;
+	}
   </style>
 </head>
 <body>
   <div class="d-flex justify-content-center align-items-center vh-100">
+<!-- TRACKING GROUP -->
     <div class="container mt-4">
-      <h3 class="mb-4">Canned Messages</h3>
+      <h3>Tracking</h3>
       
       <div class="list-group">
-        <!-- Message 1 -->
-        <div class="list-group-item d-flex justify-content-between align-items-center">
-          <div>
-            <span>Order Confirmation</span>
-            <span id="copied-label1" class="copied-label">Copied</span>
-          </div>
-          <button class="btn btn-primary btn-sm" onclick="copyBoth('message1', 'copied-label1')">Copy</button>
-          <span id="message1" class="hidden-text">
-            Thank you for your order!
-            We have received your payment and your order is now being processed.
-            You will receive a tracking number soon.
-          </span>
+<!-- Message 1 -->
+<div class="list-group-item d-flex justify-content-between align-items-center">
+<div>
+<span>Yamato</span>
+<span id="copied-labelYamato" class="copied-label">Copied</span>
+</div>
+<button class="btn btn-primary btn-sm" onclick="copyBoth('messageYamato', 'copied-labelYamato')">Copy</button>
+<span id="messageYamato" class="hidden-text">Na-ship out na po namin ang inyong order. 
+Please note the following details:
+
+Tracking Number: 
+Courier: Yamato
+
+Pwede niyo pong ma-track ang order via this link:
+https://track.kuronekoyamato.co.jp/english/tracking
+
+Maraming salamat po sa inyong order! 🥰</span>
+</div>
+<!-- End Message 1 -->
+<!-- Message 2 -->
+<div class="list-group-item d-flex justify-content-between align-items-center">
+<div>
+<span>Sagawa</span>
+<span id="copied-labelSagawa" class="copied-label">Copied</span>
+</div>
+<button class="btn btn-primary btn-sm" onclick="copyBoth('messageSagawa', 'copied-labelSagawa')">Copy</button>
+<span id="messageSagawa" class="hidden-text">Na-ship out na po namin ang inyong order. 
+Please note the following details:
+
+Tracking Number: 
+Courier: Sagawa
+
+Pwede niyo pong ma-track ang order via this link:
+https://k2k.sagawa-exp.co.jp/p/sagawa/web/okurijosearcheng.jsp
+
+Maraming salamat po sa inyong order! 🥰</span>
+</div>
+<!-- End Message 2 -->
+<!-- Message 3 -->
+<div class="list-group-item d-flex justify-content-between align-items-center">
+<div>
+<span>Express</span>
+<span id="copied-labelExpress" class="copied-label">Copied</span>
+</div>
+<button class="btn btn-primary btn-sm" onclick="copyBoth('messageExpress', 'copied-labelExpress')">Copy</button>
+<span id="messageExpress" class="hidden-text">Naprocess na po naming ang inyong package for shipment.
+Please note the following details:
+
+Tracking Number: 
+Courier: LBC Express
+Flight Date: 
+Delivery Date (after flight date): 
+
+Pwede niyo pong ma-track ang order via this link:
+https://www.lbcexpress.com/track/
+
+Maraming salamat po sa inyong order! 🥰</span>
+</div>
+<!-- End Message 3 -->
         </div>
 
-        <!-- Message 2 -->
-        <div class="list-group-item d-flex justify-content-between align-items-center">
-          <div>
-            <span>Shipping Update</span>
-            <span id="copied-label2" class="copied-label">Copied</span>
-          </div>
-          <button class="btn btn-primary btn-sm" onclick="copyBoth('message2', 'copied-label2')">Copy</button>
-          <span id="message2" class="hidden-text">
-            Your order has been shipped!
-            Please allow 2-4 business days for delivery.
-            Thank you for choosing us!
-          </span>
-        </div>
-
-        <!-- Message 3 -->
-        <div class="list-group-item d-flex justify-content-between align-items-center">
-          <div>
-            <span>Support Response</span>
-            <span id="copied-label3" class="copied-label">Copied</span>
-          </div>
-          <button class="btn btn-primary btn-sm" onclick="copyBoth('message3', 'copied-label3')">Copy</button>
-          <span id="message3" class="hidden-text">
-            Thank you for reaching out!
-            Our team is reviewing your inquiry and will get back to you within 24 hours.
-          </span>
-        </div>
-
-        <!-- Message 4 -->
-        <div class="list-group-item d-flex justify-content-between align-items-center">
-          <div>
-            <span>International Order Received</span>
-            <span id="copied-label4" class="copied-label">Copied</span>
-          </div>
-          <button class="btn btn-primary btn-sm" onclick="copyBoth('message4', 'copied-label4')">Copy</button>
-          <span id="message4" class="hidden-text">
-            Natanggap na namin ang inyong international order, ka-Yehey!
-
-            EXPRESS ORDER NUMBER:
-            PAYMENT AMOUNT: ¥
-
-            Paki-double check po ang details na nasa invoice.
-
-            ※ Maaaring ma-return sa Japan ang package kung may error sa address.
-
-            Paki-bayaran ang amount na nakasulat sa invoice at i-send ang picture ng transaction receipt para ma-ship namin ang inyong parcel.
-
-            Maraming salamat pong muli sa pag-order! 😄
-          </span>
-        </div>
       </div>
+<!-- END TRACKING GROUP -->
     </div>
   </div>
 
