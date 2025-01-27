@@ -7,6 +7,7 @@
 
   <!-- Load Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
   <style>
     body {
@@ -33,18 +34,34 @@
 </head>
 <body>
   <div class="d-flex justify-content-center align-items-center vh-100">
-<!-- TRACKING GROUP -->
-    <div class="container mt-4">
-      <h3>Tracking</h3>
-      
-      <div class="list-group">
+      <div class="container mt-4">
+	  
+<!-- GREETINGS GROUP -->
+<h3>Greetings</h3>
+<div class="list-group">
 <!-- Message 1 -->
-<div class="list-group-item d-flex justify-content-between align-items-center">
+<div class="list-group-item d-flex align-items-center">
+<span class="me-3 text-secondary" onclick="copyBoth('messageHow', 'copied-labelHow')" style="cursor: pointer;"><i class="fas fa-copy"></i></span>
+<div>
+<span>How can we help?<span>
+<span id="copied-labelHow" class="copied-label">Copied</span>
+</div>
+<span id="messageHow" class="hidden-text">Hello! Thank you for messaging the Yehey Japan sales team. How can we help you? 😊</span>
+</div>
+<!-- End Message 1 -->
+</div>
+<!-- END GREETINGS GROUP -->
+
+<!-- TRACKING GROUP -->
+<h3>Tracking</h3>      
+<div class="list-group">
+<!-- Message 1 -->
+<div class="list-group-item d-flex align-items-center">
+<span class="me-3 text-secondary" onclick="copyBoth('messageYamato', 'copied-labelYamato')" style="cursor: pointer;"><i class="fas fa-copy"></i></span>
 <div>
 <span>Yamato</span>
 <span id="copied-labelYamato" class="copied-label">Copied</span>
 </div>
-<button class="btn btn-primary btn-sm" onclick="copyBoth('messageYamato', 'copied-labelYamato')">Copy</button>
 <span id="messageYamato" class="hidden-text">Na-ship out na po namin ang inyong order. 
 Please note the following details:
 
@@ -58,12 +75,12 @@ Maraming salamat po sa inyong order! 🥰</span>
 </div>
 <!-- End Message 1 -->
 <!-- Message 2 -->
-<div class="list-group-item d-flex justify-content-between align-items-center">
+<div class="list-group-item d-flex align-items-center">
+<span class="me-3 text-secondary" onclick="copyBoth('messageSagawa', 'copied-labelSagawa')" style="cursor: pointer;"><i class="fas fa-copy"></i></span>
 <div>
 <span>Sagawa</span>
 <span id="copied-labelSagawa" class="copied-label">Copied</span>
 </div>
-<button class="btn btn-primary btn-sm" onclick="copyBoth('messageSagawa', 'copied-labelSagawa')">Copy</button>
 <span id="messageSagawa" class="hidden-text">Na-ship out na po namin ang inyong order. 
 Please note the following details:
 
@@ -77,16 +94,16 @@ Maraming salamat po sa inyong order! 🥰</span>
 </div>
 <!-- End Message 2 -->
 <!-- Message 3 -->
-<div class="list-group-item d-flex justify-content-between align-items-center">
+<div class="list-group-item d-flex align-items-center">
+<span class="me-3 text-secondary" onclick="copyBoth('messageExpress', 'copied-labelExpress')" style="cursor: pointer;"><i class="fas fa-copy"></i></span>
 <div>
 <span>Express</span>
 <span id="copied-labelExpress" class="copied-label">Copied</span>
 </div>
-<button class="btn btn-primary btn-sm" onclick="copyBoth('messageExpress', 'copied-labelExpress')">Copy</button>
 <span id="messageExpress" class="hidden-text">Naprocess na po naming ang inyong package for shipment.
 Please note the following details:
 
-Tracking Number: 
+Tracking Number: {name}
 Courier: LBC Express
 Flight Date: 
 Delivery Date (after flight date): 
@@ -105,6 +122,28 @@ Maraming salamat po sa inyong order! 🥰</span>
   </div>
 
   <script>
+  
+  let recipientName = "";
+
+  function saveName() {
+    const nameInput = document.getElementById('recipientName').value.trim();
+    if (nameInput) {
+      recipientName = nameInput;
+      localStorage.setItem('recipientName', recipientName); // Save name to localStorage
+      alert(`Recipient's name saved as: ${recipientName}`);
+      updateMessages();
+    } else {
+      alert('Please enter a name.');
+    }
+  }
+
+  function updateMessages() {
+    const messages = document.querySelectorAll('.hidden-text');
+    messages.forEach(message => {
+      message.textContent = message.textContent.replace('{name}', recipientName);
+    });
+  }
+	
     function copyBoth(elementId, labelId) {
       const text = document.getElementById(elementId).textContent.trim();
       const textarea = document.createElement('textarea');
@@ -120,6 +159,16 @@ Maraming salamat po sa inyong order! 🥰</span>
         label.classList.remove('visible');
       }, 3000);
     }
+	
+	// Load saved name on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedName = localStorage.getItem('recipientName'); // Retrieve name from localStorage
+    if (savedName) {
+      recipientName = savedName;
+      document.getElementById('recipientName').value = savedName; // Update the input field
+      updateMessages(); // Update messages with the saved name
+    }
+  });
   </script>
 
 </body>
